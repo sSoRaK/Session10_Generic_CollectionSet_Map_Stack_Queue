@@ -155,14 +155,12 @@ public class ShopManagement {
     private static void removeCatalogNameById() {
         System.out.print("Nhập mã danh mục muốn xóa: ");
         int removeCatalogById = Integer.parseInt(scanner.nextLine());
-        boolean checkRemove = false;
         boolean checkExist = false;
         for (Categories category : categoriesList) {
             if (category.getCatalogId() == removeCatalogById) {
                 if (!isExistProductInCategories(category, productsList)) {
                     categoriesList.remove(removeCatalogById - 1);
                     System.out.println("Đã xóa danh mục.");
-                    checkRemove = true;
                 } else {
                     System.err.println("Danh mục đang chứa sản phẩm không thể xóa!");
                 }
@@ -222,7 +220,7 @@ public class ShopManagement {
         boolean checkRemove = false;
         for (Products product : productsList) {
             if (product.getProductId().equals(removeProductId)) {
-                productsList.remove(product.getProductId()); // chưa xóa được sản phẩm ra khỏi list
+                productsList.remove(product);
                 System.out.println("Đã xóa sản phẩm.");
                 checkRemove = true;
             }

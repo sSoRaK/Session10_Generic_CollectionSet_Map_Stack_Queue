@@ -156,9 +156,9 @@ public class ShopManagement {
         System.out.print("Nhập mã danh mục muốn xóa: ");
         int removeCatalogById = Integer.parseInt(scanner.nextLine());
         boolean checkExist = false;
-        for (Categories category : categoriesList) {
-            if (category.getCatalogId() == removeCatalogById) {
-                if (!isExistProductInCategories(category, productsList)) {
+        for (int i = 0; i < categoriesList.size(); i++) {
+            if (categoriesList.get(i).getCatalogId() == removeCatalogById) {
+                if (!isExistProductInCategories(categoriesList.get(i), productsList)) {
                     categoriesList.remove(removeCatalogById - 1);
                     System.out.println("Đã xóa danh mục.");
                 } else {
@@ -218,9 +218,9 @@ public class ShopManagement {
         System.out.print("Nhập mã sản phẩm muốn xóa: ");
         String removeProductId = scanner.nextLine();
         boolean checkRemove = false;
-        for (Products product : productsList) {
-            if (product.getProductId().equals(removeProductId)) {
-                productsList.remove(product);
+        for (int i = 0; i < productsList.size(); i++) {
+            if (productsList.get(i).getProductId().equals(removeProductId)) {
+                productsList.remove(productsList.get(i));
                 System.out.println("Đã xóa sản phẩm.");
                 checkRemove = true;
             }
